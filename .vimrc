@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 set backspace=indent,eol,start
+set showcmd
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -15,8 +16,7 @@ Plugin 'VundleVim/Vundle.vim'
 """""""""""""""""""""""""""""""""""""""""""""
 "           personal plugin start           "
 """""""""""""""""""""""""""""""""""""""""""""
-Plugin 'Yggdroot/indentLine'
-let g:indentLine_char = '|'
+" Plugin 'Yggdroot/indentLine'
 " async syntax checking plugin for Vim
 Plugin 'w0rp/ale'
 
@@ -96,8 +96,8 @@ set incsearch
 let g:gitgutter_max_signs = 500  " default value
 inoremap <Esc> <Esc>:w<CR>
 map <F5> :!python %<CR>
-map <F8> :Glog<cR>
-map <F9> :cprev<cR>
+map <F8> :Glog<CR>
+map <F9> :cprev<CR>
 map <F10> :cnext<cR>
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
@@ -216,9 +216,9 @@ py << EOF
 import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
 EOF
 
 " Ctrl-j 切换到下方的分割窗口 - Ctrl-k 切换到上方的分割窗口 - Ctrl-l
@@ -236,6 +236,7 @@ nnoremap ¬ <C-W>>
 nnoremap ∆ <C-W>+
 nnoremap ˚ <C-W>-
 
+vnoremap <C-K> :normal I#  <CR>:w<CR><Esc>
 " ignore compiled files
 set wildignore=*.o,*~,*.pyc
 
@@ -308,3 +309,4 @@ if version >= 603
     set encoding=utf-8
     set fileencoding=utf-8
 endif
+hi MatchParen ctermbg=blue guibg=white
